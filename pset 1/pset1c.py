@@ -4,7 +4,8 @@ Created on Sun Mar 20 14:38:33 2022
 
 @author: user
 """
-
+# Program computes best savings rate required to raise a down payment for a dream home in 36 months, given a semi-annual salary raise over the period, down_payment
+# of 25% of the total cost, an assumed, modifiable initial dream house cost of $1.000.000, and an interest rate of 4% per annum.
 
 #Takes user inputs; annual salary, %monthly salary saved, cost of dream home.
 starting_salary = float(input("Enter your annual salary: "));
