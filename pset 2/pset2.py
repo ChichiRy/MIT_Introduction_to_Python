@@ -5,9 +5,10 @@ Created on Thu Jun  2 11:18:35 2022
 
 @author: chichi_ry
 """
+# Program implements a game of hangman from a pre-loaded list of words, words.txt
 
 # Problem Set 2, hangman.py
-# Name: Ryan Chironga
+# Name: Ryan Chironga <Chichi_Ry>
 # Collaborators:
 # Time spent:
 
@@ -79,7 +80,8 @@ def is_word_guessed(secret_word, letters_guessed):
     else:
         return False
 
-
+# Alternative executable is_word_guessed, whereby secret_word_list is the main iterable object, as opposed to the letters_guessed in the above function.
+# Both have the same end-points, though.
 def is_word_guessed(secret_word, letters_guessed):    
     pass
     secret_word_list = list(secret_word)
@@ -128,8 +130,16 @@ def get_available_letters(letters_guessed):
             letters_list.remove(c)
     return ''.join(letters_list)
     
-
+# is_letter_guessed checks if letter_guessed is contained in the secret_word. Similar to is_word_guessed, but checks only letters.
 def is_letter_guessed(secret_word, letter_guessed):
+    '''
+    secret_word: string, the word the user is guessing; assumes all letters are
+      lowercase
+    letter_guessed: letter that has just been guessed;
+      assumes that letter is lowercase
+    returns: boolean, True if letter is in secret_word;
+      False otherwise
+    '''
     secret_word_list = list(secret_word)
 
     if letter_guessed in secret_word_list:
@@ -137,8 +147,13 @@ def is_letter_guessed(secret_word, letter_guessed):
     else:
         return False
     
-    
+# unique_letters counts number of unique/unrepeated letters in secret_word to calculate the score
 def unique_letters(secret_word):
+    '''
+    secret_word: string, the word the user is guessing; assumes all letters are
+      lowercase
+    returns: NUmber of unique letters in secret_word
+    '''
     unique_letter_count = []
     
     for d in secret_word:
