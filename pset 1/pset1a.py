@@ -4,6 +4,8 @@ Created on Sun Mar 20 13:50:51 2022
 
 @author: user
 """
+# Program computes number of months required to raise a down payment for a dream home, given constant salary over the period, down_payment
+# of 25% of the total cost, and an interest rate of 4% per annum.
 
 #Takes user inputs; annual salary, %monthly salary saved, cost of dream home.
 annual_salary = float(input("Enter your annual salary: "));
