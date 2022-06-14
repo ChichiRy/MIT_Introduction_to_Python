@@ -80,7 +80,7 @@ def is_word_guessed(secret_word, letters_guessed):
     else:
         return False
 
-# Alternative executable is_word_guessed, whereby secret_word_list is the main iterable object, as opposed to the letters_guessed in the above function.
+# Alternative executable function is_word_guessed, whereby secret_word_list is the main iterable object, as opposed to the letters_guessed in the above function.
 # Both have the same end-points, though.
 def is_word_guessed(secret_word, letters_guessed):    
     pass
