@@ -159,7 +159,8 @@ def deal_hand(n):
     for i in range(num_vowels, (n - 1)):    
         x = random.choice(CONSONANTS)
         hand[x] = hand.get(x, 0) + 1
-        
+	
+    # adds wild card option to vowels
     if '*' not in hand:
         hand['*'] = hand.get('*', 0) + 1
     else:
@@ -406,7 +407,7 @@ def substitute_hand(hand, letter):
     returns: dictionary (string -> int)
     """
     
-    pass  # TO DO... Remove this line when you implement this function
+    # pass  # TO DO... Remove this line when you implement this function
     
     hand_copy = hand.copy()
     new_letters = hand_copy.get(letter, 0)
@@ -454,27 +455,36 @@ def play_game(word_list):
 
     word_list: list of lowercase strings
     """
+    # Asks for number of hands player wants to play
     total_all_hands = 0
     number_hands = int(input(('Enter total number of hands: ')))
     print()
     print('-----------')
     print()
     
+    # checks if number of hands is greater than zero
     while number_hands > 0:
+	#Adjusts number of remaining hands
         number_hands -= 1
         print('Number of hands remaining:', number_hands, '\n\n')
+	#Calls deal_hand to get a hand and displays it
         hand = deal_hand(HAND_SIZE)
         print('Current Hand:', display_hand(hand), end = '')
+	#Asks if user wants to substitute a letter
         choice_substitute = input('Would you like to substitute a letter? ')
         choice_substitute = str(choice_substitute).lower().strip()
+	#If yes, asks for letter to be substituted then runs substitute_hand function
         if choice_substitute == 'yes':
             letter = input(str('Which letter would you like to replace? '))
             letter = str(letter).lower().strip()
             hand_copy = substitute_hand(hand, letter)
             original_hand = hand_copy
+	#If not, it skips
         elif choice_substitute == 'no':
             original_hand = hand
             hand_copy = hand
+	#If answer is neither a recognisable yes or no, it runs a loop, waiting for acceptable input. Then it checks which option, and carries out 
+	#similar instructions.
         while choice_substitute not in ('yes', 'no'):
             print('Please respond with a "yes" or a "no":', end = ' ')
             choice_substitute = input('Would you like to substitute a letter? ')
@@ -490,24 +500,29 @@ def play_game(word_list):
             else:
                 {}
         
+	#Calls play_hand function and returns points scored for the hand
         print()
         hand_total = play_hand(hand_copy, word_list)
         
         print('-----------')
         
+	#Asks user if they want to replay the hand
         choice_replay = input('Would you like to replay the hand? ')
         choice_replay = str(choice_replay).lower().strip()
+	#If and while yes, the hand is reinstated and play_hand is called again. The points are not stored.
         while choice_replay == 'yes':
             hand = original_hand
             hand_total = play_hand(hand, word_list)
             choice_replay = input('Would you like to replay the hand? ')
             choice_replay = str(choice_replay).lower().strip()
+	#If no, the hand ends and the score for the hand is added to the total score
         if choice_replay == 'no':
             print()
             print('-----------')
             print()
             total_all_hands += hand_total
-            continue
+	#If answer is neither a recognisable yes or no, it runs a loop, waiting for acceptable input. Then it checks which option, and carries out 
+	#similar instructions.
         while choice_replay not in ('yes', 'no'):
             print('Please respond with a "yes" or a "no":', end = ' ')
             choice_replay = input('Would you like to replay the hand? ')
@@ -530,6 +545,7 @@ def play_game(word_list):
         print('-----------')
         print()
           
+    # Final score for the whole game is displayed.
     print('Total score for all hands:', total_all_hands)
     # print("play_game not implemented.") # TO DO... Remove this line when you implement this function
     
