@@ -4,6 +4,7 @@ Created on Sun Mar 20 11:56:48 2022
 
 @author: user
 """
+#Program to compute x to a particular number, and log of x to base 2.
 
 import math
 
