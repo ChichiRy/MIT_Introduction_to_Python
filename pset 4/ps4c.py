@@ -143,6 +143,17 @@ class SubMessage(object):
         on the dictionary
         '''    
         # pass #delete this line and replace with your code here
+        # message_text = SubMessage.get_message_text(self)
+        # message_text = list(message_text)
+        # encrypted_message = []
+        # for character in message_text:
+        #    if character in string.ascii_letters:
+        #        encrypted_message.append(transpose_dict[character])
+        #    else:
+        #        encrypted_message.append(character)
+        # encrypted_message = ''.join(encrypted_message)
+        # return encrypted_message
+    
         message_text = SubMessage.get_message_text(self).split(' ')
         encrypted_text = []
         for word in message_text:
