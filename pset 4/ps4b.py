@@ -17,14 +17,14 @@ def load_words(file_name):
     Depending on the size of the word list, this function may
     take a while to finish.
     '''
-    # print("Loading word list from file...")
-    # inFile: file
+    # print("Loading word list from file...")                               # Commented out to prevent multiple printing of this line when recalling load_words function
+    # inFile: file                                                          # during initialising 
     inFile = open(file_name, 'r')
     # wordlist: list of strings
     wordlist = []
     for line in inFile:
         wordlist.extend([word.lower() for word in line.split(' ')])
-    # print("  ", len(wordlist), "words loaded.")
+    # print("  ", len(wordlist), "words loaded.")                           # Same
     return wordlist
 
 def is_word(word_list, word):
@@ -110,13 +110,13 @@ class Message(object):
                  another letter (string). 
         '''
         # pass #delete this line and replace with your code here
-        shift_dict = {}
-        letters = list(string.ascii_letters)
-        index = 0
-        for letter in letters:
-            if letter in string.ascii_uppercase:
-                if (index + shift) < 26:
-                    shift_dict[letter] = letters[(index + 26) + shift]
+        shift_dict = {}                                                           # Initialises shifted alphabet dictionary
+        letters = list(string.ascii_letters)                                      # Creates a list of uppercase and lowercase letters from string library
+        index = 0                                                                 # Initialises index
+        for letter in letters:                                                    # Iterates through letters in the list. For each letter, a shift is app
+            if letter in string.ascii_uppercase:                                  # lied. If index overflws in either +ve or -ve directions, 26 is either
+                if (index + shift) < 26:                                          # added or subtracted.
+                    shift_dict[letter] = letters[(index + 26) + shift]            # Letter is then added as the value of the key in the dictionary, shift_dict.
                 elif (index + shift) > 51:
                     shift_dict[letter] = letters[(index - 26) + shift]
                 else:
@@ -147,13 +147,13 @@ class Message(object):
         message_text = self.get_message_text()
         message_text = list(message_text)
         shift_dict = self.build_shift_dict(shift)
-        encrypted_message = []
-        for character in message_text:
-            if character in string.ascii_letters:
+        encrypted_message = []                                                           # For each character in message_text, its equivalent in shift_dict
+        for character in message_text:                                                   # is added. If the character is not a letter, it is directly added
+            if character in string.ascii_letters:                                        # to encrypted_message as a list.
                 encrypted_message.append(shift_dict[character])
             else:
-                encrypted_message.append( character)
-        encrypted_message = ''.join(encrypted_message)
+                encrypted_message.append(character)
+        encrypted_message = ''.join(encrypted_message)                                   # Rejoins individual list characters to form message.
         return encrypted_message
 
 class PlaintextMessage(Message):
